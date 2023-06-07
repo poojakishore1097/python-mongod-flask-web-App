@@ -1,6 +1,6 @@
 # python-mongod-flask-web-App
 
-Note Application Using Flask and MongoDB
+Application Using Flask and MongoDB
 Python is a very easy-to-learn language due to its user-friendly syntax. Moreover, Python has many open-source libraries, and almost every use case of Python has an existing library for that.
 Python has several web application frameworks such as Django and Flask. Flask is an open-source, lightweight, Python web application framework.
 Flask is designed to make it easy to get a simple application up and running.
