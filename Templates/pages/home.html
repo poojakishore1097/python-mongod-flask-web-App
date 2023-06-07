@@ -1,0 +1,36 @@
+{% extends 'base.html'%} {% block title %} Home {% endblock %} {% block content%}
+<form action="{{ url_for('home') }}" method="get">
+    <input type="text" name="search" placeholder="Search" value="{{ search_query }}">
+    <input type="submit" value="Search">
+</form>
+    <div class="container mt-5 mb-5 px-10 ">
+        <div class="row">
+            {% if (tasks is defined) and tasks %} {% for task in tasks %}
+            <div class="col-md-6 offset-md-3 mb-2 ">
+                <div class="card">
+                    <div class="card-body">
+                        <input type="hidden" name="_id" value="{{ task._id }}" />
+                        <h4 class="card-title">Task name: {{task['task_name']}}</h4>
+                        <p class="card-text">Description :{{task['description']}}</p>
+                        <p class="card-text">Status :{{task['status']}}</p>
+                        <p class="card-text">Date: {{task['date']}}</p>
+                        <p class="card-text">Assigned: {{task['assigned_user']}}</p>
+                       <div class="d-flex justify-content-between">
+                            <a href="/edit_task?form={{task['_id']}}"  class="btn btn-primary">Edit</a>
+							<form method="POST" action="/delete_task">
+							<input type="hidden" name="_id" value="{{task['_id']}}"/>
+							<button type="submit" class="btn btn-danger">Delete</button> 
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %} {% else %}
+		<div class="col-md-6 offset-md-3 text-center">
+			<h4>You have not added any task</h4>
+			<a href="/add_task" class="btn btn-primary"> Add Task </a>
+		</div>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}
